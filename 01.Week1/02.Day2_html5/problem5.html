@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>Course Enrollment</title>
+    </head>
+    <body>
+        <header>
+            <h1>Course Enrollment</h1>
+            <p>Fill the details in the below</p>
+        </header>
+        <main>
+            <section>
+                <fieldset>
+                    <legend>Enrollment process</legend>
+                <h3>Enrollment progress</h3>
+                <progress value="40" max="100">40%</progress>
+                <p>Task completion progress:40%</p>
+                <h3>Personal Information</h3>
+                <label>Name:</label>
+                <input type="text" name="name" id="name"/>
+                <br><br>
+                <label >Email:</label>
+                <input type="email" name="email" id="email">
+                <br><br>
+                <label >joining date</label>
+                <input type="date" name="date" id="date">
+                <br><br>
+                <input type="submit" value="submit">
+
+            </section>
+            </fieldset>
+            <br/><br/>
+            <section>
+                <fieldset>
+                    <legend>courses list</legend>
+                <h3>Courses list</h3>
+                 <label for="course">Choose Course:</label><br>
+                <input list="courses" id="course" name="course" required>
+
+                <datalist id="courses">
+                    <option value="Java Development">
+                    <option value=".NET Full Stack">
+                    <option value="Data Analytics">
+                    <option value="Cloud Computing">
+                    <option value="Cyber Security">
+                </datalist>
+                 <!-- <select name="datalist" id="datalist">
+                    <label >choose course:</label>
+                    <option>Java</option>
+                    <option selected>Python</option>
+                    <option>AWS</option>
+                    <option>Azure</option>
+                    <option>Data Science</option>
+                    <option>Data Analyst</option>
+                 </select> -->
+                 <br><br>
+                 <label>skillset range:</label>
+                 <input type="range">
+                   <label for="skill">Skill Level (Beginner – Advanced):</label>
+                 <meter id="skill" value="50" min="0" max="100">50%</meter>
+                 </fieldset>
+                
+            </section>
+           
+            
+           
+            
+
+        </main>
+        
+
+    </body>
+</html>
