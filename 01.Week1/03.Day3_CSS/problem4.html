@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title>Blog Page</title>
+        <link rel="stylesheet" href="./problem3.css">
+    </head>
+    <style>
+        header{
+                background-color: bisque;
+    color:black;
+    padding: 15px 20px;
+    
+}
+header:hover{
+    color: aqua;
+}
+/* .blog-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+} */
+.blog-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /*3 columns and 1 row */
+    gap: 10px;
+    /* justify-content: center; */
+    padding: 20px;
+}
+
+
+.blog-cards{
+    border: 2px solid blue;
+    margin:10px;
+    padding:10px;
+    border-radius: 10px;
+}
+button{
+    border:2px solid rgb(44, 103, 120);
+    background-color: rgba(33, 163, 228, 0.342);
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;  
+    
+}
+button:hover{
+    color: rgb(231, 84, 21);
+
+}
+@media (max-width: 992px) {
+    .blog-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile View */
+@media (max-width: 600px) {
+    .blog-container {
+        grid-template-columns: 1fr;
+    }
+}
+        
+    </style>
+    <body>
+        <header>
+            <h1>Welcome to the blog</h1>
+        </header>
+        <main>
+            <div class="blog-container">
+                <div class="blog-cards">
+                    <h3>box model is explained</h3>
+                    <p>A beginner-friendly guide to margins, padding, borders, and how spacing works in CSS. </p>
+                    <button>Read More</button>
+                </div>
+                <div class="blog-cards">
+                    <h3>navigation is expalined</h3>
+                    <p>there are three types of navigation in eb forms.internal,external,inline</p>
+                    <button>Read More</button>
+                </div>
+                <div class="blog-cards">
+                    <h3>autocomplete is explained</h3>
+                    <p>automplete gives hint to the browser whether the fiels are filled automically the data entered the before.</p>
+                    <button>Read More</button>
+                </div>
+                 <div class="blog-cards">
+                    <h3>navigation is expalined</h3>
+                    <p>there are three types of navigation in eb forms.internal,external,inline</p>
+                    <button>Read More</button>
+                </div>
+                <div class="blog-cards">
+                    <h3>autocomplete is explained</h3>
+                    <p>automplete gives hint to the browser whether the fiels are filled automically .</p>
+                    <button>Read More</button>
+                </div>
+
+            </div>
+           
+        </main>
+    </body>
+</html>
