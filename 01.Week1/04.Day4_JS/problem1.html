@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>responsive web page</title>
+</head>
+<style>
+    header{
+        background-color: skyblue;
+        padding: 15px 20px;
+    }
+    header h1{
+        color:black;
+        text-align: center;
+        
+    }
+    .box{
+            display: flex;
+            min-height: 100vh;
+            
+        
+    }
+    .sidebar{
+        background-color: rgb(13, 149, 161);
+        min-height: 100vh;
+        width: 250px;
+        padding: 20px;
+    }
+    .sidebar ul {
+    list-style: none;
+    padding: 0;
+    }
+
+    .sidebar li {
+        padding: 10px;
+        margin-top: 10px;
+        background-color: rgba(255,255,255,0.2);
+        border-radius: 6px;
+        }
+    li:hover{
+        background-color: blueviolet;
+    }
+    .main{
+        flex: 1;
+        background-color: aliceblue;
+    }
+    .container{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap:20px;
+    }
+    .blog{
+        border: 2px solid rgba(81, 68, 68, 0.358);
+        border-radius: 10px;
+        background-color: white;
+        padding: 15px;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    footer{
+        background-color: skyblue;
+        padding: 15px 20px;
+        text-align: center;
+    }
+@media (max-width:768px) {
+        .box {
+        flex-direction: column;    
+        }  
+
+    .sidebar {
+        width: 100%;                 
+        min-height: auto;       
+    }
+
+    .sidebar ul {
+        display: flex;               
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .sidebar li {
+        margin-top: 0;               
+    }
+
+    .container {
+        grid-template-columns: 2fr;  
+    }
+        
+    }
+@media(max-width:500px)
+    {
+        .box{
+            flex-direction: column;
+        }
+        .sidebar{
+            width: 100%;                 
+            min-height: auto; 
+
+        }
+        
+    .sidebar ul {
+        display: flex;               
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .sidebar li {
+        margin-top: 0;               
+    }
+
+    .container{
+        grid-template-columns: 1fr;  
+    }
+}
+
+</style>
+<body>
+    <header>
+        <h1>My CSS Page</h1>
+    </header>
+   
+        <div class="box">
+            <aside class="sidebar">
+                <ul>
+                    <li>menu</li>
+                    <li>home</li>
+                    <li>contact</li>
+                    <li>about</li>
+                    <li>settings</li>
+                    <li>bin</li>
+                </ul>
+            </aside>
+            <main class="main">
+            <div class="container">
+                <div class="blog">
+                    <h1>user</h1>
+                    <p>user page</p>
+                </div>
+                <div class="blog">
+                    <h1>home</h1>
+                    <p>welcome to the home page</p>
+                </div>
+                <div class="blog">
+                    <h1>contact</h1>
+                    <p>welcome to the contact page</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <h1>2026@cognizant.com</h1>
+    </footer>
+
+    
+</body>
+</html>

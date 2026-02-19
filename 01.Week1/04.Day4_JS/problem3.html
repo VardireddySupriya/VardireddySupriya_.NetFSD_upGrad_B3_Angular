@@ -1,0 +1,46 @@
+<!-- Store purchase amount in a variable
+Apply discount rules:
+oAmount ≥ 5000 → 20% discount
+oAmount ≥ 3000 → 10% discount
+oAmount < 3000 → No discount
+Calculate and display:
+oDiscount amount
+oFinal payable amount -->
+<html>
+    <head>
+        <title>simple discount calculator</title>
+    </head>
+    <body>
+        <h1>simple dicount calculator</h1>
+
+
+        <script>
+            let amount=3000;
+            if(amount>=5000){
+                let discount=(20/100)*amount;
+                console.log("discount value:" +discount);
+                document.write("discount value:" +discount);
+                let final_amount=amount-discount;
+                console.log("final payable amount:" +final_amount);
+                document.write("final payable amount:" +final_amount);
+
+            }
+            else if(amount>=3000){
+                let discount=(10/100)*amount;
+                console.log("discount value:" +discount);
+                document.write("discount value:" +discount +"</br>");
+                let final_amount=amount-discount;
+                console.log("final payable amount:" +final_amount);
+                document.write("final payable amount:" +final_amount);
+
+            }
+            else{
+                let final_amount=amount;
+                console.log("final payable amount:" +final_amount);
+                document.write("final payable amount:" +final_amount);
+            }
+       
+        
+        </script>
+    </body>
+</html>
