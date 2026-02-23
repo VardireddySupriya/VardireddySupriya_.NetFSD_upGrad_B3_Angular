@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Profile Info</title>
+</head>
+<body>
+
+<input type="button" value="Profile" id="btn1">
+<input type="button" value="Update Marks" id="btn2">
+
+<div id="class"></div>
+
+<script>
+let student = {
+    name: "Kalpana",
+    rollno: 5,
+    marks: 80
+};
+
+function updateProfile(studentObj) {
+
+    let div = document.getElementById("class"); // ✅ FIXED
+
+    div.innerHTML =
+        "<h2>Student Profile</h2>" +
+        "<p>Name: " + studentObj.name + "</p>" +
+        "<p>Roll No: " + studentObj.rollno + "</p>" +
+        "<p>Marks: " + studentObj.marks + "</p>";
+}
+
+function updateMarks() {
+    let increment=5;
+    student.marks = student.marks+increment;
+    updateProfile(student);
+}
+
+// ✅ FIXED function reference
+document.getElementById("btn1").addEventListener("click", function () {
+    updateProfile(student);
+});
+
+document.getElementById("btn2").addEventListener("click", updateMarks);
+</script>
+
+</body>
+</html>

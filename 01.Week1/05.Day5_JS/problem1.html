@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Genarator</title>
+</head>
+<body>
+        <label>User Name:</label>
+        <input type="text"  id="un" placeholder="enter user name">           <!-- inside the form only required field is working -->
+        <br><br>
+        <input type="submit" value="Genaerate Greeting" onclick="generateGreeting()">
+        <p id="p1"></p>
+    
+<script>
+        function generateGreeting()
+        {
+        let obj1=document.getElementById("un").value;    <!--trim also we can use here beacause it can remove the spaces -->
+        let obj2=document.getElementById("p1");
+          
+            if(obj1 !== "")
+        {
+            obj2.innerText="Hello! "+obj1 +" welcome to my website";
+            obj2.style.color="red";
+        }
+        else{
+            obj2.innerText=" ";
+        }
+            
+        }
+</script>
+    
+</body>
+</html>

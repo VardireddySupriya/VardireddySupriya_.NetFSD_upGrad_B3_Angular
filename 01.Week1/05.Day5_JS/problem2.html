@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simple object</title>
+</head>
+<body>
+  <input type="button" value="display user info" onclick="displayUserInf(object)">
+  <p id="p1"></p>
+
+
+    <script>
+        let object={
+            name:"supriya",
+            age:25,
+            city:"Kadapa"
+            
+        };
+        function displayUserInf(object){
+            let result=document.getElementById("p1");
+            result.innerText="Name : "+object.name +" "+"age :  "+object.age+"  "+"city:"+object.city;
+
+        }
+    </script>
+    
+</body>
+</html>

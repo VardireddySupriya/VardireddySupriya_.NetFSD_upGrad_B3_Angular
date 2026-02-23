@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+</head>
+<body>
+    <input type="button" value="Increment" onclick="increment(1)">
+    <input type="button" value="reset" onclick="reset()">
+    <h2 id="count"></h2>
+<script>
+    let counter=0;
+    function increment(step)
+    {
+        counter =counter+step;
+        document.getElementById("count").innerText=counter;
+
+    }
+    function reset(){
+        counter=0;
+        document.getElementById("count").innerText=counter;
+    }
+    
+
+</script>
+    
+</body>
+</html>
