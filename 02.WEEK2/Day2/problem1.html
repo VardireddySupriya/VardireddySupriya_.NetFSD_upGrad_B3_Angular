@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks Analyzer</title>
+</head>
+<body>
+    <button onclick="studentMarks()">Student Marks Analyzer</button>
+<script>
+ function studentMarks(){
+    let studentmarks=[20,30,50,90,100];
+    const mappedMarks = studentmarks.map((marks, index) =>
+    `Subject ${index+1}: ${marks}`
+    );
+    console.log(mappedMarks)
+    const total=studentmarks.reduce((sum,marks)=>
+    sum+marks,0
+    );
+    const totalMarks=`Total marks: ${total}`;
+    const average=studentmarks.reduce((avg,marks)=>
+    total/studentmarks.length
+    );
+    const averageMarks=`average marks: ${average}`;
+    const passed=studentmarks.filter((marks)=>
+    marks>average
+);
+    const failed = studentmarks.filter(marks => marks <= average);
+    const result=`result is: ${passed}`;
+    const result1=`result is: ${failed}`;
+    console.log(totalMarks);
+    console.log(averageMarks);
+    console.log(result);
+    console.log(result1);
+
+   
+    
+ }
+</script>
+    
+</body>
+</html>

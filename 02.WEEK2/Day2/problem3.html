@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>employee document</title>
+</head>
+<body>
+
+<select id="selectedJob">
+    <option value="All">All Employees</option>
+    <option value="manager">Manager</option>
+    <option value="salesman">Salesman</option>
+</select>
+
+<button onclick="showEmployee()">Show Employees</button>
+<br><br>
+
+<div id="result"></div>
+
+<script>
+
+let employeeDetails = [
+    { id: 1, name: "Rahul", role: "manager", salary: 50000 },
+    { id: 2, name: "Anita", role: "salesman", salary: 20000 },
+    { id: 3, name: "Vikram", role: "manager", salary: 50000 },
+    { id: 4, name: "Sneha", role: "salesman", salary: 20000 }
+];
+
+function showEmployee() {
+
+    let selectedJob = document.getElementById("selectedJob").value;
+
+    const filteredEmployees =
+        selectedJob === "All"        
+            ? employeeDetails
+            : employeeDetails.filter(emp => emp.role === selectedJob);
+
+    let tableHTML = `
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Salary</th>
+            </tr>
+    `;
+
+    filteredEmployees.forEach(emp => {
+        tableHTML += `
+            <tr>
+                <td>${emp.id}</td>
+                <td>${emp.name}</td>
+                <td>${emp.role}</td>
+                <td>₹${emp.salary}</td>
+            </tr>
+        `;
+    });
+
+    tableHTML += `</table>`;
+
+    document.getElementById("result").innerHTML = tableHTML;
+}
+
+</script>
+
+</body>
+</html>
