@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geolocation Logger</title>
+</head>
+<body>
+
+<h2>Geolocation Logger</h2>
+
+<input type="button" value="Get My Location" onclick="getLocation()">
+
+<p id="current"></p>
+
+<h3>Location History (Last 5)</h3>
+<ul id="history"></ul>
+
+<script>
+
+function getLocation() {
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(fn_success, fn_error, {timeout:10000});
+    } else {
+        alert("Geolocation not supported by your browser.");
+    }
+}
+
+
+function fn_success(position) {
+    const lat = position.coords.latitude;
+    const long = position.coords.longitude;
+    const timestamp = new Date(position.timestamp).toLocaleString();
+
+    
+    document.getElementById("current").innerHTML = 
+        `Latitude: ${lat} <br> Longitude: ${long} <br> Time: ${timestamp}`;
+
+   
+    let history = JSON.parse(localStorage.getItem("locationHistory")) || [];
+
+    
+    history.unshift({lat, long, timestamp});
+
+   
+    if(history.length > 5) history = history.slice(0, 5);
+
+    
+    localStorage.setItem("locationHistory", JSON.stringify(history));
+
+    
+    displayHistory();
+}
+
+
+function fn_error(error) {
+    let msg = "";
+    switch(error.code){
+        case error.PERMISSION_DENIED:
+            msg = "Permission denied: User denied the request for Geolocation.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            msg = "Location unavailable: Location information is not available.";
+            break;
+        case error.TIMEOUT:
+            msg = "Timeout: The request to get user location timed out.";
+            break;
+        default:
+            msg = "Unknown error occurred.";
+    }
+    document.getElementById("current").innerHTML = msg;
+}
+
+function displayHistory() {
+    const historyEl = document.getElementById("history");
+    historyEl.innerHTML = "";
+
+    const history = JSON.parse(localStorage.getItem("locationHistory")) || [];
+    history.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `Lat: ${item.lat}, Long: ${item.long}, Time: ${item.timestamp}`;
+        historyEl.appendChild(li);
+    });
+}
+</script>
+
+</body>
+</html>

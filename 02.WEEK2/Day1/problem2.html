@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Form Validation with Events</title>
+</head>
+<body>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="enter your name" required onchange="validateName(this)"/>
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" onchange="validateEmail(this)">
+        <br><br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" onchange="validateAge(this)">
+        <input type="button" value="submit" id="b1"onclick=" submitForm()">
+        
+    </form>
+<script>
+
+function validateName(el){
+    if(el.value.trim() === "") {
+        alert("Name cannot be empty!");
+        return false;
+    }
+    return true;
+}
+
+function validateEmail(el){
+    if(!el.value.includes("@")) {
+        alert("Email must contain '@'!");
+        return false;
+    }
+    return true;
+}
+
+function validateAge(el){
+    if(el.value <= 18) {
+        alert("Age must be greater than 18!");
+        return false;
+    }
+    return true;
+}
+
+function submitForm(){
+    const nameEl = document.getElementById("name");
+    const emailEl = document.getElementById("email");
+    const ageEl = document.getElementById("age");
+
+    const validName = validateName(nameEl);
+    const validEmail = validateEmail(emailEl);
+    const validAge = validateAge(ageEl);
+
+    if(validName && validEmail && validAge){
+        const userData = {
+            name: nameEl.value.trim(),
+            email: emailEl.value.trim(),
+            age: ageEl.value.trim()
+        };
+        sessionStorage.setItem("userData", JSON.stringify(userData));
+        alert("User data saved successfully!");
+    } else {
+        alert("Please fix errors before submitting!");
+    }
+}
+</script>
+    
+</body>
+</html>

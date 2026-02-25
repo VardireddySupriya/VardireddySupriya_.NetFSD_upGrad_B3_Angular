@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple text area</title>
+</head>
+<body>
+    <label for="t1">notes:</label>
+    <br><br>
+    <textarea name="t1" id="t1" cols="50" rows="10"></textarea>
+    <br><br>
+    <input type="button" value="save" onclick="save()"/>
+    <input type="button" value="get" onclick="get()"/>
+    <input type="button" value="clear" onclick="clearNotes()"/>
+<script>
+    
+    function save(){
+        let obj1=document.getElementById("t1").value.trim();
+        
+        if(obj1 === ""){
+            alert("textarea is empty can you please enter any text");
+        }
+        else{
+           let save=localStorage.setItem("notes",obj1)
+           alert("notes saved in local storage");
+        }
+
+
+    }
+    function get(){
+        let get=localStorage.getItem("notes");
+        alert("notes : " + get);
+    }
+    function clearNotes(){
+        localStorage.removeItem("notes");
+        alert("removed the items");
+
+    }
+
+</script>
+    
+</body>
+</html>
