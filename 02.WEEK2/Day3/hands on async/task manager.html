@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Async Task Manager</title>
+</head>
+<body>
+
+<h2>Task Manager</h2>
+
+<input type="text" id="taskInput" placeholder="Enter task">
+
+<button id="addBtn">Add Task</button>
+<button id="deleteBtn">Delete Task</button>
+<button id="listBtn">List Tasks</button>
+
+<ul id="taskList"></ul>
+
+<script>
+
+let tasks = [];
+
+const addTask = (task) =>
+    new Promise(resolve => {
+        setTimeout(() => {
+            tasks.push(task);
+            resolve();
+        }, 100);
+    });
+
+const deleteTask = (index) =>
+    new Promise(resolve => {
+        setTimeout(() => {
+            tasks.splice(index, 1);
+            resolve();
+        }, 300);
+    });
+
+const listTasks = () =>
+    new Promise(resolve => {
+        setTimeout(() => resolve([...tasks]), 300);
+    });
+
+
+const renderTasks = async () => {
+    const data = await listTasks();
+    const ul = document.getElementById("taskList");
+
+    ul.innerHTML = "";
+
+    if (data.length === 0) {
+        ul.innerHTML = "<li>No tasks available</li>";
+        return;
+    }
+
+    data.forEach((task, index) => {
+        ul.innerHTML += `
+            <li>
+                ${task}
+                
+            </li>`;
+    });
+};
+
+
+
+const removeTask = async (index) => {
+    await deleteTask(index);
+    renderTasks();
+};
+
+
+
+document.getElementById("addBtn").addEventListener("click", async () => {
+    const input = document.getElementById("taskInput");
+    const taskText = input.value.trim();
+
+    if (!taskText) return;
+
+    await addTask(taskText);
+    input.value = "";
+});
+
+document.getElementById("deleteBtn").addEventListener("click", async () => {
+    if (tasks.length === 0) return;
+
+    await deleteTask(tasks.length - 1); 
+    renderTasks();
+});
+
+document.getElementById("listBtn").addEventListener("click", renderTasks);
+
+</script>
+
+</body>
+</html>
