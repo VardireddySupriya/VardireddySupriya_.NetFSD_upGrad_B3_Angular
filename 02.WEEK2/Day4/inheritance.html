@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance</title>
+</head>
+<body>
+<script>
+class Vehicle {
+
+    constructor(brand, speed) {
+        this.brand = brand;
+        this.speed = speed;
+    }
+
+    
+    displayInfo() {
+        console.log("Brand:", this.brand);
+        console.log("Speed:", this.speed, "km/h");
+    }
+}
+class Car extends Vehicle {
+
+    constructor(brand, speed, fuelType) {
+        super(brand, speed);
+        this.fuelType = fuelType;
+    }
+    showCarDetails() {
+        console.log("Fuel Type:", this.fuelType);
+    }
+}
+const myCar = new Car("Toyota", 180, "Petrol");
+
+console.log("Calling Parent Method:");
+myCar.displayInfo(); 
+    </script>
+    
+</body>
+</html>

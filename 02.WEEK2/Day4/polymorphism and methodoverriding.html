@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>polymorphism</title>
+</head>
+<body>
+    <script>
+        class Payment{
+    pay(amount){
+        console.log("processing payment");
+    }
+
+}
+class CreditCardPayment extends Payment {
+    pay(amount) {
+        console.log(`Paid ₹${amount} using Credit Card`);
+    }
+}
+
+class UPIPayment extends Payment {
+    pay(amount) {
+        console.log(`Paid ₹${amount} using UPI`);
+    }
+}
+
+class CashPayment extends Payment {
+    pay(amount) {
+        console.log(`Paid ₹${amount} using Cash`);
+    }
+}
+const p1 = new CreditCardPayment();
+const p2 = new UPIPayment();
+const p3 = new CashPayment();
+
+p1.pay(500);
+p2.pay(500);
+p3.pay(500);
+
+    </script>
+</body>
+</html>
