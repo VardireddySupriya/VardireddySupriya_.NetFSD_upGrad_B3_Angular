@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Product Search App</title>
+</head>
+<body>
+
+<h2>Mini Product Search</h2>
+
+<input type="text" id="searchBox" placeholder="Search products...">
+
+<ul id="productList"></ul>
+
+<p id="noResultMessage" style="display:none;">No Results Found</p>
+
+<script>
+
+
+const ProductApp = (function () {
+
+    const state = {
+        products: [
+            { id: 1, name: "Laptop" },
+            { id: 2, name: "Smartphone" },
+            { id: 3, name: "Headphones" },
+            { id: 4, name: "Keyboard" },
+            { id: 5, name: "Mouse" },
+            { id: 6, name: "Monitor" },
+            { id: 7, name: "Camera" },
+            { id: 8, name: "Tablet" }
+        ],
+        filteredProducts: []
+    };
+
+    const searchBox = document.getElementById("searchBox");
+    const productList = document.getElementById("productList");
+    const noResultMessage = document.getElementById("noResultMessage");
+
+    function render() {
+        productList.innerHTML = "";
+
+        if (state.filteredProducts.length === 0) {
+            noResultMessage.style.display = "block";
+            return;
+        }
+
+        noResultMessage.style.display = "none";
+
+        state.filteredProducts.forEach(product => {
+            const li = document.createElement("li");
+            li.textContent = product.name;
+            li.setAttribute("data-id", product.id);
+            productList.appendChild(li);
+        });
+    }
+    function filterProducts(keyword) {
+        state.filteredProducts = state.products.filter(product =>
+            product.name.toLowerCase().includes(keyword.toLowerCase())
+        );
+
+        render();
+    }
+
+    function handleSearch(event) {
+        const keyword = event.target.value.trim();
+        filterProducts(keyword);
+    }
+
+
+    function handleProductClick(event) {
+        if (event.target.tagName === "LI") {
+            alert("Selected Product: " + event.target.textContent);
+        }
+    }
+
+    function init() {
+        state.filteredProducts = state.products;
+        render();
+
+        searchBox.addEventListener("input", handleSearch);
+
+        // Event Delegation
+        productList.addEventListener("click", handleProductClick);
+    }
+
+    return { init };
+
+})();
+
+ProductApp.init();
+
+</script>
+
+</body>
+</html>

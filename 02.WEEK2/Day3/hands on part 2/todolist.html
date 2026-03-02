@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic To-Do List</title>
+</head>
+<body>
+
+<h2>Dynamic To-Do List</h2>
+
+<input type="text" id="taskInput" placeholder="Enter new task">
+<button id="addTaskBtn">Add Task</button>
+
+<ul id="taskList"></ul>
+
+<script>
+
+
+const TodoApp = (function () {
+
+    const taskInput = document.getElementById("taskInput");
+    const addTaskBtn = document.getElementById("addTaskBtn");
+    const taskList = document.getElementById("taskList");
+
+    
+    function createTaskElement(taskText) {
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            <span class="task-text">${taskText}</span>
+            <button class="complete-btn">Complete</button>
+            <button class="delete-btn">Delete</button>
+        `;
+
+        return li;
+    }
+
+  
+    function addTask() {
+        const taskText = taskInput.value.trim();
+        if (taskText === "") return;
+
+        const taskElement = createTaskElement(taskText);
+        taskList.appendChild(taskElement);
+        taskInput.value = "";
+    }
+
+    
+    function handleTaskActions(event) {
+        const target = event.target;
+
+       
+        if (target.classList.contains("delete-btn")) {
+            target.parentElement.remove();
+        }
+
+        
+        if (target.classList.contains("complete-btn")) {
+            const textSpan = target.parentElement.querySelector(".task-text");
+            
+            if (textSpan.style.textDecoration === "line-through") {
+                textSpan.style.textDecoration = "none";
+            } else {
+                textSpan.style.textDecoration = "line-through";
+            }
+        }
+    }
+
+   
+    function init() {
+        addTaskBtn.addEventListener("click", addTask);
+
+        taskInput.addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+                addTask();
+            }
+        });
+
+        // Event Delegation on UL
+        taskList.addEventListener("click", handleTaskActions);
+    }
+
+    return {
+        init: init
+    };
+
+})();
+
+TodoApp.init();
+
+</script>
+
+</body>
+</html>
