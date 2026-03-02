@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hide and show</title>
+</head>
+<style>
+    .d1{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: aliceblue;
+        border: 2px solid black;
+
+    }
+    .q1{
+        cursor: pointer;
+    }
+</style>
+<body>
+    <h1 style="text-align:center;">slidetoggle:</h1>
+    <div class="d1">
+        <h3 class="q1"> What is jQuery?</h3>
+        <p class="p1"> jQuery is an open-source JavaScript library designed to simplify common JavaScript tasks, particularly HTML document traversal and manipulation, event handling, animation, and Ajax interactions</p>
+    </div>
+    <div class="d1">
+        <h3 class="q1">What is the $() function in the jQuery library?</h3>
+        <p class="p1"> The $() function, or dollar sign, is simply an alias for the main jQuery() function. It is the primary method used for selecting elements in the Document Object Model (DOM) using CSS-like syntax, and it returns a jQuery object that can then be used to apply various jQuery methods</p>
+    </div>
+    <div class="d1">
+        <h3 class="q1">What is the difference between the $(document).ready() method and the window.onload() method?</h3>
+        <p class="p1">This is the most efficient place to put most jQuery code that interacts with the page's structure.window.onload() waits for the entire page, including all resources, to be fully loaded before running its code</p>
+    </div>
+    <div class="d1">
+        <h3 class="q1">How can you hide an element using jQuery?</h3>
+        <p class="p1">nswer: In jQuery, the .hide() method is used to conceal selected HTML elements by setting their CSS display property to "none". Other related methods include .fadeOut() to hide an element with a fading animation, and .slideUp() for a sliding effect</p>
+    </div>
+    <script  src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".q1").click(function(){
+            $(".p1").hide();
+            $(this).next(".p1").slideToggle(1000);
+            $(this).toggleClass("active");
+
+        })
+    })
+</script>
+    
+</body>
+</html>
