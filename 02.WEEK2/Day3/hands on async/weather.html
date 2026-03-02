@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Data Fetcher</title>
+</head>
+<body>
+
+<h2>Weather Data Fetcher</h2>
+
+<button onclick="getWeatherAsync()">Get Weather (Async/Await)</button>
+
+<p id="output"></p>
+
+<script>
+
+const latitude = 12.97;   
+const longitude = 77.59;
+
+const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+
+
+const getWeatherAsync = async () => {
+
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        const weather = data.current_weather;
+
+        const report = `
+Location: Bangalore
+Temperature: ${weather.temperature}°C
+Wind Speed: ${weather.windspeed} km/h
+Wind Direction: ${weather.winddirection}°
+        `;
+
+        document.getElementById("output").innerText = report;
+
+    } catch (error) {
+
+        document.getElementById("output").innerText =
+            `Error fetching weather data: ${error.message}`;
+    }
+};
+
+</script>
+
+</body>
+</html>
