@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback form interaction</title>
+</head>
+<body>
+<form id="myform">
+    Name:
+    <input type="text" name="un" id="un" placeholder="enter your name">
+    <br><br>
+    Email:
+    <input type="email" name="email" id="email" placeholder="enter your email">
+    <br><br>
+    course rating:
+    <select id="rating">
+        <option>5</option>
+        <option>4</option>
+        <option>3</option>
+        <option>2</option>
+        <option>1</option>
+    </select>
+    <br><br>
+    comments:
+    <br><br>
+    <textarea name="text" id="text" rows="5" cols="10"></textarea>
+    <br><br>
+    <input type="button" value="submit" id="bt1">
+    <!-- <input type="button" value="clear" id="ct1"> -->
+    <p id="message"></p>
+
+</form>
+<script  src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#bt1").click(function(){
+            let name=$("#un").val().trim();
+            let email=$("#email").val().trim();
+            if(name ==="")
+           {
+              $("#message").addClass("error")
+             .text("Please enter your name.").css("color","red");
+              return;
+          }
+          if(email==="")
+          {
+            $("#message").addClass("error")
+             .text("Please enter your email.").css("color","red");
+          }
+            $("#message").addClass("success")
+             .text("form is submitted.").css("color","green");
+             $("#un").val("");
+             $("#email").val("");
+             $("#rating").val("");
+             $("#text").val("");
+
+            
+        
+
+        })
+    })
+
+</script>
+    
+</body>
+</html>
