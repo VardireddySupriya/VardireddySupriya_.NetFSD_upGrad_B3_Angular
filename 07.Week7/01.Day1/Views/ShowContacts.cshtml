@@ -1,0 +1,40 @@
+﻿@model List<ContactInfo>
+<h1>ContactInfo-Details</h1>
+<hr />
+<a class="btn btn-primary" asp-action="AddContact">Add Contact</a></br></br>
+
+<form asp-action="GetContactById" method="get">
+    <label>Enter Contact ID:</label>
+    <input type="number" name="ContactId" required />
+    <input type="submit" value="Search" />
+</form>
+<table border="2px" cellpadding="10" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ContactId</th>
+            <br />
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>CompanyName</th>
+            <th>EmailId</th>
+            <th>MobileNo</th>
+            <th>Designation</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var cont in Model)
+        {
+            <tr>
+                <td>@cont.ContactId</td>
+                <td>@cont.FirstName</td>
+                <td>@cont.LastName</td>
+                <td>@cont.CompanyName</td>
+                <td>@cont.EmailId</td>
+                <td>@cont.MobileNo</td>
+                <td>@cont.Designation</td>
+            </tr>
+        
+        }
+    </tbody>
+</table>

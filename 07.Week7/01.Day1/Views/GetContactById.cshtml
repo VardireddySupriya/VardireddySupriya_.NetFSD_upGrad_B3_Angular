@@ -1,0 +1,44 @@
+﻿@model List<ContactInfo>
+<h1>get contact by id-search</h1>
+<hr/>
+
+
+<hr />
+@if (Model != null && Model.Any())
+{
+  <table border="2px" cellpadding="10" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ContactId</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>CompanyName</th>
+            <th>EmailId</th>
+            <th>MobileNo</th>
+            <th>Designation</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var cont in Model)
+        {
+            <tr>
+                <td>@cont.ContactId</td>
+                <td>@cont.FirstName</td>
+                <td>@cont.LastName</td>
+                <td>@cont.CompanyName</td>
+                <td>@cont.EmailId</td>
+                <td>@cont.MobileNo</td>
+                <td>@cont.Designation</td>
+            </tr>
+        
+        }
+    </tbody>
+</table>
+}
+else
+{
+    <p class="text-danger">contact not found</p>
+}
+<br/>
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>
