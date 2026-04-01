@@ -1,0 +1,22 @@
+﻿@model StudentRegistration
+<h1>Details</h1>
+
+<div>
+    <table border="2px" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@ViewBag.Name</td>
+                <td>@ViewBag.Age</td>
+                <td>@ViewBag.Course</td>
+            </tr>
+        </tbody>
+    </table>
+</div><br/>
+<a asp-action="Register" class="btn btn-secondary">Back to Register</a>

@@ -1,0 +1,16 @@
+﻿@model Feedback
+@{
+    ViewData["Title"] = "Feedback Result";
+}
+
+<h2>Feedback Result</h2>
+
+<h3>@ViewData["Message"]</h3>
+
+@if (ViewData["UserName"] != null)
+{
+    <p>Thank you, @ViewData["UserName"]!</p>
+}
+
+<br />
+<a href="/feedback/form" class="btn btn-secondary">Back</a>

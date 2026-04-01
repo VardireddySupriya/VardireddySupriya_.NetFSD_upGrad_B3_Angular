@@ -1,0 +1,33 @@
+﻿@model Calculator
+@{
+    ViewData["Title"] = "Calculator";
+}
+
+<h2>Simple Calculator</h2>
+
+<form method="post" action="/calculator/add">
+
+    <div class="form-group">
+        <label>Number 1</label>
+        <input type="number" name="num1" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Number 2</label>
+        <input type="number" name="num2" class="form-control" required />
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-success">Add</button>
+
+</form>
+
+<hr />
+
+<h3>
+    Result:
+    @if (ViewData["Result"] != null)
+    {
+        @ViewData["Result"]
+    }
+</h3>

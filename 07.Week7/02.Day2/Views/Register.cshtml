@@ -1,0 +1,35 @@
+﻿@model StudentRegistration
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Registration form</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Course" class="control-label"></label>
+                <input asp-for="Course" class="form-control" />
+                <span asp-validation-for="Course" class="text-danger"></span>
+            </div><br/>
+            <button type="submit" class="btn btn-success">Register</button>
+            
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <!-- jQuery validation + Unobtrusive scripts -->
+    <partial name="_ValidationScriptsPartial" />
+}
