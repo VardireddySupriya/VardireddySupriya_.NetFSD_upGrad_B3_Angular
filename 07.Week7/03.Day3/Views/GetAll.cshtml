@@ -1,0 +1,42 @@
+﻿@model List<ContactInfo>
+
+<h1>get all</h1>
+<a class="btn-btn-primary" asp-action="Add">create</a>
+<div>
+    <table border="1" cellpadding="10" cellspacing="0" class="table">
+        <thead>
+            <tr>
+                <th>Contact Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>CompanyName</th>
+                <th>Email</th>
+                <th>MobileNo</th>
+                <th>Designation</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ContactId</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName </td>
+                    <td>@item.CompanyName</td>
+                    <td>@item.EmailId </td>
+                    <td>@item.MobileNo</td>
+                    <td>@item.Designation</td>
+
+                    <td>
+                        @* <a asp-action="Edit" asp-route-id="@item.ContactId">Edit</a> | *@
+                        <a asp-action="GetByContactId" asp-route-id="@item.ContactId">Details</a> |
+                        @* <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
+                    </td>
+               
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

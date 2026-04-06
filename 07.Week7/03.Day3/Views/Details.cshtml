@@ -1,0 +1,16 @@
+﻿@model Movie
+<h1>Movie Details</h1>
+<hr />
+
+<table border="1" cellpadding="10">
+    <tr><th>ContactId</th><td>@Model.Id</td></tr>
+    <tr><th>FirstName</th><td>@Model.Title</td></tr>
+    <tr><th>LastName</th><td>@Model.Genre</td></tr>
+    <tr><th>CompanyName</th><td>@Model.ReleaseDate</td></tr>
+    <tr><th>EmailId</th><td>@Model.Price</td></tr>
+    <tr><th>MobileNo</th><td>@Model.Rating</td></tr>
+    
+</table>
+
+<br />
+<a asp-action="GetAll">Back</a>
