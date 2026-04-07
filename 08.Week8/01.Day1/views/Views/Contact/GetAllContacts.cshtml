@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebApplication7.Models.ContactInfo>
+<h1>ContactInfo-Details</h1>
+<hr />
+<a class="btn btn-primary" asp-action="AddContact">Add Contact</a></br></br>
+
+@* <form asp-action="GetContactById" method="get">
+    <label>Enter Contact ID:</label>
+    <input type="number" name="GetContactById" required />
+    <input type="submit" value="Search" />
+</form> *@
+<table border="2px" cellpadding="10" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ContactId</th>
+            
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>EmailId</th>
+            <th>MobileNo</th>
+            <th>Designation</th>
+            <th>Company Name</th>
+            <th>Department Name</th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var cont in Model)
+        {
+            <tr>
+                <td>@cont.ContactId</td>
+                <td>@cont.FirstName</td>
+                <td>@cont.LastName</td>
+                <td>@cont.EmailId</td>
+                <td>@cont.MobileNo</td>
+                <td>@cont.Designation</td>
+                <td>@cont.Company.CompanyName</td>
+                <td>@cont.Department.DepartmentName</td>
+                <td>
+                    <td>
+                        <a asp-controller="Contact"
+                           asp-action="GetContactById"
+                           asp-route-id="@cont.ContactId">Details</a> |
+
+                        <a asp-controller="Contact"
+                           asp-action="EditContact"
+                           asp-route-id="@cont.ContactId">Edit</a>  |
+
+                        <a asp-controller="Contact"
+                           asp-action="DeleteContact"
+                           asp-route-id="@cont.ContactId">Delete</a>
+                    </td>
+                </td>
+            </tr>
+        
+        }
+    </tbody>
+</table>
+
+
+

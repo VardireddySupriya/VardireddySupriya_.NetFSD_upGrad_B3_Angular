@@ -1,0 +1,43 @@
+﻿@model ContactInfo
+<h1>details</h1>
+<hr />
+
+
+<hr />
+
+    @if (Model != null)
+    {
+        <table class="table">
+            <tr>
+                <th>ContactId</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>EmailId</th>
+                <th>MobileNo</th>
+               <th>Designation</th>
+                <th>Company Name</th>
+                <th>Department Name</th>
+            </tr>
+
+            <tr>
+                <td>@Model.ContactId</td>
+                <td>@Model.FirstName</td>
+                <td>@Model.LastName</td>
+                <td>@Model.EmailId</td>
+                <td>@Model.MobileNo</td>
+                 <td>@Model.Designation</td>
+                <td>@Model.Company?.CompanyName</td>
+                <td>@Model.Department?.DepartmentName</td>
+            </tr>
+        </table>
+    }
+ 
+else
+{
+    <p class="text-danger">@ViewBag.Error</p>
+}
+<br />
+<a asp-action="GetAllContacts" class="btn btn-secondary">Back to List</a>
+
+
+

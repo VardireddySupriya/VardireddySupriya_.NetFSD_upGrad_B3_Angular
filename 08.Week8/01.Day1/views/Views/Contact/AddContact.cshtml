@@ -1,0 +1,67 @@
+﻿@model ContactInfo
+@{
+    ViewData["Title"] = "create";
+}
+<h1>Create new contact</h1>
+<hr />
+<form asp-action="AddContact" method="post">
+    
+    <div class="form-group">
+        <label asp-for="FirstName" class="Form-Control"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName" class="Form-Control"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+ 
+    <div class="form-group">
+        <label asp-for="EmailId" class="Form-Control"></label>
+        <input asp-for="EmailId" class="form-control" />
+        <span asp-validation-for="EmailId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MobileNo" class="Form-Control"></label>
+        <input asp-for="MobileNo" class="form-control" />
+        <span asp-validation-for="MobileNo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Designation" class="Form-Control"></label>
+        <input asp-for="Designation" class="form-control" />
+        <span asp-validation-for="Designation" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CompanyId" class="Form-Control"></label>
+        <select asp-for="CompanyId" class="form-control">
+            <option value="">-- Select Company --</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        @* <input asp-for="CompanyId" class="form-control" />
+        <span asp-validation-for="CompanyId" class="text-danger"></span> *@
+    </div><br/>
+    <div class="form-group">
+        <label asp-for="DepartmentId" class="Form-Control"></label>
+        <select asp-for="DepartmentId" class="form-control">
+            <option value="">-- Select Department --</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        @* <input asp-for="DepartmentId" class="form-control" />
+        <span asp-validation-for="DepartmentId" class="text-danger"></span> *@
+    </div> <br />
+    
+    @* <p class="text-danger">@ViewBag.ErrorMessage</p> *@
+    <button type="submit" class="btn btn-success">save</button>
+    <a asp-action="GetAllContacts" class="btn btn-secondary">Back to List</a>
+</form>
+@section Scripts {
+    <!-- jQuery validation + Unobtrusive scripts -->
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
